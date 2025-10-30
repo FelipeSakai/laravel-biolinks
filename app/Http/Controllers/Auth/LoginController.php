@@ -16,6 +16,7 @@ class LoginController extends Controller
 
     public function login(MakeLoginRequest $request)
     {
+
         if($request->attempt()){
             return redirect()->route('dashboard');
         }
