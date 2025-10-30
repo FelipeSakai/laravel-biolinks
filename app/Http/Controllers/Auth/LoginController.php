@@ -15,6 +15,7 @@ class LoginController extends Controller
 
     public function login()
     {
+
         if ($user = User::query()->where('email', '=', request()->email)->first()) {
 
             if (Hash::check(request()->password, $user->password)) {
@@ -22,7 +23,7 @@ class LoginController extends Controller
                 return redirect('/dashboard');
             }
         }
-        return back()->with(['message' => 'Login nao encontrado']);
+        return back()->with(['message' => 'Login não encontrado']);
 
     }
 
