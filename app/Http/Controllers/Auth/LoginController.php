@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MakeLoginRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,16 +14,12 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
-    public function login()
+    public function login(MakeLoginRequest $request)
     {
-
-        if ($user = User::query()->where('email', '=', request()->email)->first()) {
-
-            if (Hash::check(request()->password, $user->password)) {
-                auth()->login($user);
-                return redirect('/dashboard');
-            }
+        if($request->attempt()){
+            return redirect()->route('dashboard');
         }
+
         return back()->with(['message' => 'Login não encontrado']);
 
     }

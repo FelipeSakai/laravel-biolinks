@@ -2,16 +2,20 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
 
 class MakeLoginRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Handle Login Request
+     * @property-read string $email
+     * @property-read string $password
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,5 +29,17 @@ class MakeLoginRequest extends FormRequest
             'email' => ['required', 'email'],
             'password' => ['required'],
         ];
+    }
+
+    public function attempt(): bool
+    {
+        if ($user = User::query()->where('email', '=', $this->email)->first()) {
+
+            if (Hash::check($this->password, $user->password)) {
+                auth()->login($user);
+                return true;
+            }
+        }
+        return false;
     }
 }
