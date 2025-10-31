@@ -14,6 +14,13 @@
             @enderror
         </div>
 
+        <div>
+            <input name="lastname" placeholder="lastname" value="{{ old('lastname') }}"/>
+            @error('lastname')
+            <span>{{$message}}</span>
+            @enderror
+        </div>
+
         <br>
 
         <div>

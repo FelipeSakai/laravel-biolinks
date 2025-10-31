@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest
         return [
             'name' => ['required', 'string'],
             'email' => ['required', 'email', 'confirmed', 'unique:users'],
-            'password' => ['required',Password::defaults()],
+            'password' => ['required', Password::defaults()],
         ];
     }
 
@@ -36,10 +36,8 @@ class RegisterRequest extends FormRequest
     {
         $user = new User();
 
-        $user->name = $this->name;
-        $user->password = $this->password;
-        $user->email = $this->email;
-        $user->save();
+        $user = User::query()->create(
+            $this->validated());
 
         auth()->login($user);
 
