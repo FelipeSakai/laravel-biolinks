@@ -1,4 +1,5 @@
 <div>
+    {{auth()->id()}}
     <h1>Register</h1>
 
     @if($message = session()->get('message'))
@@ -10,13 +11,6 @@
         <div>
             <input name="name" placeholder="Name" value="{{ old('name') }}"/>
             @error('name')
-            <span>{{$message}}</span>
-            @enderror
-        </div>
-
-        <div>
-            <input name="lastname" placeholder="lastname" value="{{ old('lastname') }}"/>
-            @error('lastname')
             <span>{{$message}}</span>
             @enderror
         </div>
