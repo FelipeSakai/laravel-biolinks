@@ -11,10 +11,8 @@ class DashboardController extends Controller
         $user = auth()->user();
 
 
-        dd(
-            $user->links(),
-            $user->links()->create()
-                ->where('name', '=', 'titulo')
+        dump($user->links(),
+            $user->links()
                 ->get()
         );
 
