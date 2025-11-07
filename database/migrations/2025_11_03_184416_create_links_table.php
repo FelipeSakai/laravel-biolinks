@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('sort')->default(0);
             $table->string('link');
             $table->string('name');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
