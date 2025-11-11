@@ -33,14 +33,14 @@
                 {{$link->id}}, {{$link->name}}
             </a>
 
-            @can('destroy',$link)
-                <form action="{{route('links.destroy',$link)}}" method="post" onsubmit="confirm('Tem certeza ?')">
-                    @csrf
-                    @method('DELETE')
 
-                    <button>Deletar</button>
-                </form>
-            @endcan
+            <form action="{{route('links.destroy',$link)}}" method="post" onsubmit="confirm('Tem certeza ?')">
+                @csrf
+                @method('DELETE')
+
+                <button>Deletar</button>
+            </form>
+
         </li>
     @endforeach
 </div>

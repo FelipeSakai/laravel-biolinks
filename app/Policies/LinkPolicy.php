@@ -15,8 +15,4 @@ class LinkPolicy
             : Response::deny('ESSE LINK NÃO É SEU!');
     }
 
-    public function destroy(User $user, Link $link)
-    {
-
-    }
 }
