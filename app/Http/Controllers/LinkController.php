@@ -49,8 +49,6 @@ class LinkController extends Controller
      */
     public function update(UpdateLinkRequest $request, Link $link)
     {
-        $link->update($request->validated());
-
         return redirect('dashboard')
             ->with('messagem', 'Link atualizado com sucesso!');
     }

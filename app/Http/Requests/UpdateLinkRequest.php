@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateLinkRequest extends FormRequest
 {
@@ -23,7 +24,7 @@ class UpdateLinkRequest extends FormRequest
     {
         return [
             'link' => 'required|url',
-            'name' =>'required|min:3',
+            'name' => 'required|min:3',
         ];
     }
 }
